@@ -1,0 +1,249 @@
+@font-face {
+    font-family: 'metropolis';
+    src: url('../public/fonts/metropolis-regular-webfont.woff2') format('woff2'),
+    url('../public/fonts/metropolis-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'metropolis';
+    src: url('../public/fonts/metropolis-medium-webfont.woff2') format('woff2'),
+    url('../public/fonts/metropolis-medium-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'metropolis';
+    src: url('../public/fonts/metropolis-semibold-webfont.woff2') format('woff2'),
+    url('../public/fonts/metropolis-semibold-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'metropolis';
+    src: url('../public/fonts/metropolis-bold-webfont.woff2') format('woff2'),
+    url('../public/fonts/metropolis-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'metropolis';
+    src: url('../public/fonts/metropolis-extrabold-webfont.woff2') format('woff2'),
+    url('../public/fonts/metropolis-extrabold-webfont.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'metropolis';
+    src: url('../public/fonts/metropolis-black-webfont.woff2') format('woff2'),
+    url('../public/fonts/metropolis-black-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --color-1: #071840;
+
+    --color-2: white;
+    --color-2-dimmed: #fdfdff;
+    --color-2-darker: #E5ECF9;
+    --color-2-dark: #5B6F8C;
+
+    --color-3-light: #F4F8FE;
+    --color-3-lighter: #E5F6FF;
+    --color-3: #6c63ff;
+    --color-3-dark:#524ece;
+
+    --max-width: 135rem;
+    --max-post-width: 90rem;
+    --horizontal-padding: 2rem;
+    --horizontal-negative-padding: -2rem;
+    --navbar-height: 8rem;
+    --border-radius:8px;
+
+    --shadow: var(--color-2-darker) 0 5px 20px 0;
+    --shadow-stronger: var(--color-2-darker) 0 15px 18px 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 50%;
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    display: block;
+    margin: 0;
+    background-color: var(--color-2-dimmed);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 1.6rem;
+    color: var(--color-1);
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    font-family: 'metropolis', sans-serif;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+main {
+    width: 100%;
+    max-width: var(--max-width);
+    display: block;
+    margin: 0 auto;
+    padding: calc(var(--navbar-height) + 4rem) var(--horizontal-padding) 2.5rem var(--horizontal-padding);
+}
+
+
+input,textarea {
+    border: 1px solid rgb(218, 218, 218);
+    background: none;
+    font-size: unset;
+    padding: 8px 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease 0s;
+    width: 100%;
+    border-radius: 5px;
+}
+input:focus,textarea:focus{
+    border:1px solid var(--color-3) !important;
+    outline: none;
+}
+
+button{
+    border: none;
+    background: none;
+    font-size: unset;
+    color: var(--color-2);
+    background-color:var(--color-3);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 8px 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease 0s;
+}
+button:hover{
+    background-color:var(--color-3-dark);
+
+}
+
+h1 {
+    margin: 0 0 2rem 0;
+    font-size: 3.5rem;
+}
+
+h2 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+h3 {
+    margin: 0 0 4rem 0;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--color-2-dark);
+}
+
+h4 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--color-2-dark);
+}
+
+h5 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--color-2-dark);
+}
+
+h6 {
+    margin: 0 0 1rem 0;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--color-2-darker);
+}
+
+a {
+    background-color: transparent;
+    transition: color 0.2s;
+    text-decoration: none;
+    color: var(--color-1);
+}
+
+a:active,
+a:focus {
+    color: var(--color-1);
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+nav {
+    padding: 0 var(--horizontal-padding);
+}
+
+img {
+    border-style: none;
+}
+
+iframe {
+    border: none;
+}
+
+p {
+    line-height: 1.5;
+    color: var(--color-2-dark);
+}
+
+p,
+ul {
+    margin: 0;
+    padding: 0;
+    font-size: 1.6rem;
+}
+
+li {
+    list-style-type: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    gap: 2rem;
+    grid-auto-flow: dense;
+  }
+  
+  .grid div.PostPreview_wrapper__1lfeV {
+    grid-column-end: span 2;
+  }
+
+
+.form{
+    width: 60%;
+    margin: auto;
+}

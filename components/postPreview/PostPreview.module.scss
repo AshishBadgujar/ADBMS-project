@@ -1,0 +1,98 @@
+.wrapper {
+    display: block;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.wrapperSmall {
+    display: block;
+    .post {
+        width: 30rem;
+    }
+
+    .header {
+        height: 17rem;
+    }
+
+    .content {
+        padding: 2rem;
+
+        div {
+            font-size: 1.2rem;
+        }
+
+        p {
+            height: 5rem;
+            font-size: 1.2rem;
+        }
+    }
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+}
+
+.post {
+    width: 100%;
+    max-width: 65rem;
+    margin: 0 auto;
+    border-radius: var(--border-radius);
+    background-color: var(--color-2);
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.4s;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: var(--shadow-stronger);
+    }
+}
+
+.header {
+    width: 100%;
+    height: 17rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.content {
+    padding: 2rem;
+
+    h2 {
+        margin-bottom: 1.5rem;
+    }
+
+    div {
+        font-size: 1.4rem;
+        color: var(--color-2-dark);
+    }
+
+    p {
+        position: relative;
+        width: 100%;
+        max-height: 9rem;
+        margin-bottom: 1.5rem;
+        text-overflow: ellipsis;
+        font-weight: 500;
+        overflow: hidden;
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 10rem;
+            height: 2.2rem;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--color-2) 50%);
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .content {
+        padding: 3rem;
+    }
+}
