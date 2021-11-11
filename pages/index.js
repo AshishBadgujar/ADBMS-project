@@ -28,7 +28,16 @@ const Posts = ({ posts }) => {
 
 export default Posts;
 
-export const getStaticProps = async () => {
+// export const getStaticProps = async () => {
+//   const res = await Axios.get(`${baseUrl}/api/blogs`)
+//   const posts = res.data
+
+//   return {
+//     props:
+//       { posts: posts }
+//   };
+// };
+export const getServerSideProps = async () => {
   const res = await Axios.get(`${baseUrl}/api/blogs`)
   const posts = res.data
 
