@@ -63,7 +63,7 @@ const Post = ({ post }) => {
                 <>
                     <div className={styling.header}>
                         <img
-                            src="/images/3.jpg"
+                            src={post.mediaUrl}
                             className={styling.previewImageBackground}
                             alt='preview image background'
                         />
