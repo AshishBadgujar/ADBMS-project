@@ -62,12 +62,10 @@ const Post = ({ post }) => {
                 :
                 <>
                     <div className={styling.header}>
-                        <Image
+                        <img
                             src="/images/3.jpg"
                             className={styling.previewImageBackground}
                             alt='preview image background'
-                            width={2000}
-                            height={600}
                         />
                     </div>
                     <article className={styling.elements}>
