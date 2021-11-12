@@ -82,7 +82,7 @@ const Post = ({ post }) => {
                             <i className={styling.lastEdit}>Last edit: {lastEdit}</i>
                         </div>
                         <button onClick={() => setEdit(true)}>Edit</button>
-                        <button onClick={() => deleteBlog()}>Delete</button>
+                        <button onClick={() => deleteBlog()} style={{ backgroundColor: "#ff4545" }}>Delete</button>
                     </article>
                 </>
             }
