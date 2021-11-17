@@ -7,30 +7,46 @@ import styling from './BlogPost.module.scss';
 import baseUrl from '../../helpers/baseUrl';
 import Axios from 'axios';
 import { useRouter } from 'next/router'
+import toast, { Toaster } from 'react-hot-toast';
+import Comment from '../comment/Comment';
 
-const Post = ({ post }) => {
+const Post = ({ post, comments }) => {
     const router = useRouter()
     const [title, setTitle] = useState(post.title)
     const [content, setContent] = useState(post.content)
     const [lastEdit, setLastEdit] = useState('');
     const [edit, setEdit] = useState(false)
 
+    const notify = (type, text) => {
+        if (type == 1) {
+            toast.success(text)
+        }
+        else {
+            toast.error(text)
+        }
+    };
+
     useEffect(() => {
         setLastEdit(utils.formatTimestamp(post.updatedAt));
     }, [post.updatedAt]);
 
     const deleteBlog = async () => {
-        await Axios.delete(`${baseUrl}/api/blog/${post._id}`)
-            .then(res => {
-                console.log(res.data.message)
-                router.push('/')
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        if (confirm('Are you sure want to delete?')) {
+            await Axios.delete(`${baseUrl}/api/blog/${post._id}`)
+                .then(res => {
+                    router.push('/')
+                    notify(1, res.data.message)
+                })
+                .catch(err => {
+                    notify(0, err)
+                })
+        } else {
+            return
+        }
     }
 
     const saveBlog = async (e) => {
+        setEdit(false)
         e.preventDefault();
         await Axios.post(`${baseUrl}/api/blog/${post._id}`, {
             id: post._id,
@@ -38,15 +54,15 @@ const Post = ({ post }) => {
             content,
         })
             .then(res => {
-                alert('your blog successfully updated !')
-                router.push(`/`)
+                notify(1, 'Blog successfully updated :)')
             }).catch(err => {
-                console.log(err)
+                notify(0, err)
             })
     }
 
     return (
         <Main title={post.title[blogConfig.locale]}>
+            <Toaster />
             {edit ?
                 <form action="" className="form" onSubmit={saveBlog}>
                     <h2>Edit the blog! </h2>
@@ -79,10 +95,16 @@ const Post = ({ post }) => {
                         <div className={styling.wrapper}>
                             <h2>{title}</h2>
                             <p>{content}</p>
-                            <i className={styling.lastEdit}>Last edit: {lastEdit}</i>
+                            <div className={styling.flex}>
+                                <i className={styling.lastEdit}>- {post.author}</i>
+                                <i className={styling.lastEdit}>{lastEdit}</i>
+                            </div>
                         </div>
                         <button onClick={() => setEdit(true)}>Edit</button>
                         <button onClick={() => deleteBlog()} style={{ backgroundColor: "#ff4545" }}>Delete</button>
+                        <hr />
+                        <br />
+                        {comments.length != 0 && <Comment id={post._id} comments={comments} />}
                     </article>
                 </>
             }

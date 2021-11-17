@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import baseUrl from '../../helpers/baseUrl'
 import BlogPost from '../../components/blogPost/BlogPost';
 
-const Post = (post) => {
+const Post = ({ post, comments }) => {
     const router = useRouter()
     if (router.isFallback) {
         return (
@@ -12,7 +12,7 @@ const Post = (post) => {
         )
     }
     return (
-        <BlogPost post={post} />
+        <BlogPost post={post} comments={comments} />
     )
 };
 
@@ -21,6 +21,13 @@ export default Post;
 export const getServerSideProps = async ({ params: { id } }) => {
     const res = await Axios.get(`${baseUrl}/api/blog/${id}`)
     const post = res.data
-    return { props: post };
+    const res2 = await Axios.get(`${baseUrl}/api/comments/${id}`)
+    const comments = res2.data
+    return {
+        props: {
+            post,
+            comments
+        }
+    };
 };
 

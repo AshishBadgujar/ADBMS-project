@@ -4,13 +4,24 @@ import baseUrl from '../helpers/baseUrl'
 import { useRouter } from 'next/router'
 import Main from '../components/layout/main/Main';
 import Image from 'next/image';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Write() {
     const router = useRouter()
     const [title, setTitle] = useState('')
+    const [author, setAuthor] = useState('')
     const [content, setContent] = useState('')
     const [media, setMedia] = useState("")
     const [loading, setLoading] = useState(false)
+
+    const notify = (type, text) => {
+        if (type == 1) {
+            toast.success(text)
+        }
+        else {
+            toast.error(text)
+        }
+    };
 
     const handleSubmit = async (e) => {
         setLoading(true)
@@ -18,16 +29,17 @@ export default function Write() {
         const mediaUrl = await imageUpload()
         const res = await Axios.post(`${baseUrl}/api/blogs`, {
             title,
+            author,
             content,
             mediaUrl,
         })
         const res2 = res.data
         if (res2.err) {
-            console.log(res2.err)
+            notify(0, res2.err)
         } else {
             setLoading(false)
-            alert("Published")
             router.push('/')
+            notify(1, 'Blog successfully Published :)')
         }
     }
 
@@ -46,11 +58,14 @@ export default function Write() {
 
     return (
         <Main>
+            <Toaster />
             <form action="" className="form" onSubmit={handleSubmit}>
                 <h2>Write the blog! </h2>
                 <br />
                 <span>Title</span>
-                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+                <span>Author</span>
+                <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} required />
                 <span>Browse</span>
                 <input type="file"
                     accept="image/*"
@@ -60,9 +75,9 @@ export default function Write() {
                 }
                 <div>
                     <span>Content</span>
-                    <textarea name="" id="" cols="30" rows="10" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+                    <textarea name="" id="" cols="30" rows="10" value={content} onChange={(e) => setContent(e.target.value)} required></textarea>
                 </div>
-                <button type="submit" disabled={loading}>{loading ? "Posting..." : "Post"}</button>
+                <button type="submit" disabled={loading}>{loading ? "Publishing..." : "Publish"}</button>
             </form>
         </Main>
     )

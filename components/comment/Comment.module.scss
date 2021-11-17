@@ -1,0 +1,18 @@
+.commentSec{
+    .form{
+        width: 100%;
+    }
+    .allComments{
+        width: 100%;
+    }
+
+}
+.name{
+    color: #333;
+    font-weight: 500;
+}
+.lastEdit {
+    display: block;
+    color: var(--color-2-dark);
+    font-size: smaller;
+}

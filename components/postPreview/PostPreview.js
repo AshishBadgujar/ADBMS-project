@@ -29,7 +29,7 @@ const PostPreview = ({ id, previewImage, title, lastEdit, previewText, small }) 
                         </h2>
 
                         <p>{previewText}</p>
-                        <div>Last edit: {lastEditDate}</div>
+                        <div>{lastEditDate}</div>
                     </div>
                 </article>
             </Link>

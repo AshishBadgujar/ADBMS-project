@@ -23,13 +23,14 @@ const getAllBlogs = async (req, res) => {
 }
 
 const saveBlog = async (req, res) => {
-    const { title, content, mediaUrl } = req.body
+    const { title, content, author, mediaUrl } = req.body
     try {
-        if (!title || !content) {
+        if (!title || !content || !author) {
             return res.json({ err: 'please Add all the fields!' })
         }
         const blog = await new Blog({
             title,
+            author,
             content,
             mediaUrl,
         }).save()
