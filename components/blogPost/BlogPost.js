@@ -104,7 +104,7 @@ const Post = ({ post, comments }) => {
                         <button onClick={() => deleteBlog()} style={{ backgroundColor: "#ff4545" }}>Delete</button>
                         <hr />
                         <br />
-                        {comments.length != 0 && <Comment id={post._id} comments={comments} />}
+                        <Comment id={post._id} comments={comments} />
                     </article>
                 </>
             }
