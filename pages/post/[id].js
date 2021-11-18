@@ -5,12 +5,6 @@ import baseUrl from '../../helpers/baseUrl'
 import BlogPost from '../../components/blogPost/BlogPost';
 
 const Post = ({ post, comments }) => {
-    const router = useRouter()
-    if (router.isFallback) {
-        return (
-            <h3 className="container">Loading...</h3>
-        )
-    }
     return (
         <BlogPost post={post} comments={comments} />
     )

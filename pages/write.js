@@ -36,6 +36,7 @@ export default function Write() {
         const res2 = res.data
         if (res2.err) {
             notify(0, res2.err)
+            setLoading(false)
         } else {
             setLoading(false)
             router.push('/')

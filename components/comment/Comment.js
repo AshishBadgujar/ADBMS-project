@@ -8,7 +8,7 @@ export default function Comment({ id, comments }) {
     const [name, setName] = useState('')
     const [text, setText] = useState('')
     const [edit, setEdit] = useState(true)
-    const [reviews, setReviews] = useState(comments)
+    const [reviews, setReviews] = useState(comments || [])
 
     const saveComment = async (e) => {
         setEdit(false)
@@ -51,7 +51,7 @@ export default function Comment({ id, comments }) {
                         <button type="submit">Done</button>
                     </form>
                     :
-                    <p className={styling.form}>Thanks :)</p>
+                    <h2>Thanks :)</h2>
                 }
                 <div className={styling.allComments}>
                     {reviews.map(item => commentComponent(item))}
