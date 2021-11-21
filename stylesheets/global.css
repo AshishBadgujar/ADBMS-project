@@ -246,6 +246,8 @@ li {
 
 
 .form{
-    width: 60%;
-    margin: auto;
+    position: relative;
+    width: 100%;
+    max-width: var(--max-post-width);
+    margin: 0 auto;
 }
