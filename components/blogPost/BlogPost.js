@@ -31,7 +31,8 @@ const Post = ({ post, comments }) => {
     }, [post.updatedAt]);
 
     const deleteBlog = async () => {
-        if (confirm('Are you sure want to delete?')) {
+        let pw = prompt("Let me confirm! Please enter password.")
+        if (pw == process.env.ADMIN_PASSWORD) {
             await Axios.delete(`${baseUrl}/api/blog/${post._id}`)
                 .then(res => {
                     router.push('/')
@@ -46,18 +47,23 @@ const Post = ({ post, comments }) => {
     }
 
     const saveBlog = async (e) => {
-        setEdit(false)
-        e.preventDefault();
-        await Axios.post(`${baseUrl}/api/blog/${post._id}`, {
-            id: post._id,
-            title,
-            content,
-        })
-            .then(res => {
-                notify(1, 'Blog successfully updated :)')
-            }).catch(err => {
-                notify(0, err)
+        let pw = prompt("Let me confirm! Please enter password.")
+        if (pw == process.env.ADMIN_PASSWORD) {
+            setEdit(false)
+            e.preventDefault();
+            await Axios.post(`${baseUrl}/api/blog/${post._id}`, {
+                id: post._id,
+                title,
+                content,
             })
+                .then(res => {
+                    notify(1, 'Blog successfully updated :)')
+                }).catch(err => {
+                    notify(0, err)
+                })
+        } else {
+            return
+        }
     }
 
     return (
