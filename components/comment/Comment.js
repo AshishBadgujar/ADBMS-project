@@ -38,7 +38,7 @@ export default function Comment({ id, comments }) {
     }
     return (
         <>
-            <h3>Add comment</h3>
+            <h3>Leave comment</h3>
             <div className={styling.commentSec} >
                 {edit ?
                     <form action="" className={styling.form} onSubmit={saveComment}>
