@@ -1,4 +1,9 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## screenshots
+![Web capture_24-11-2021_134837_adbms-blog vercel app](https://user-images.githubusercontent.com/67192558/152919759-301a2449-987f-4e32-aedd-a01cbc2e1be7.jpeg)
+![Web capture_24-11-2021_134915_adbms-blog vercel app](https://user-images.githubusercontent.com/67192558/152919766-56ceb4bd-6478-47da-9aa9-181d9beee5ca.jpeg)
+![Web capture_24-11-2021_134937_adbms-blog vercel app](https://user-images.githubusercontent.com/67192558/152919769-62c01646-c513-418f-b636-bb22ff9516ec.jpeg)
+![Web capture_24-11-2021_134811_adbms-blog vercel app](https://user-images.githubusercontent.com/67192558/152919770-8ed2ea2f-2d3b-42c6-b641-460bb8c029a4.jpeg)
 
 ## Getting Started
 
