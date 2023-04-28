@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import Axios from 'axios'
-import { useRouter } from 'next/router'
 import baseUrl from '../../helpers/baseUrl'
 import BlogPost from '../../components/blogPost/BlogPost';
 
 const Post = ({ post, comments }) => {
+
     return (
         <BlogPost post={post} comments={comments} />
     )

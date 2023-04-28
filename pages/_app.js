@@ -10,6 +10,7 @@ import blogConfig from '../blogConfig';
 import '../stylesheets/global.css';
 import '../stylesheets/nprogress.css';
 import '../stylesheets/nightOwl.css';
+import 'react-quill/dist/quill.snow.css';
 
 
 // Initialize the Caasy SDK. Update the Caasy

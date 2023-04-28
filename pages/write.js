@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import Main from '../components/layout/main/Main';
 import Image from 'next/image';
 import toast, { Toaster } from 'react-hot-toast';
+import Editor from '../components/editor/Editor';
 
 export default function Write() {
     const router = useRouter()
@@ -67,7 +68,7 @@ export default function Write() {
                 <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
                 <span>Author</span>
                 <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} required />
-                <span>Browse</span>
+                <span>Cover Photo</span>
                 <input type="file"
                     accept="image/*"
                     onChange={(e) => setMedia(e.target.files[0])} />
@@ -75,10 +76,11 @@ export default function Write() {
                     <Image src={URL.createObjectURL(media)} className="responsive-img" alt="img" width={700} height={400} />
                 }
                 <div>
-                    <span>Content</span>
-                    <textarea name="" id="" cols="30" rows="10" value={content} onChange={(e) => setContent(e.target.value)} required></textarea>
+                    {/* <textarea name="" id="" cols="30" rows="10" value={content} onChange={(e) => setContent(e.target.value)} required></textarea> */}
+                    <Editor content={content} setContent={setContent} />
                 </div>
-                <button type="submit" disabled={loading}>{loading ? "Publishing..." : "Publish"}</button>
+
+                <button style={{ marginTop: "2rem" }} type="submit" disabled={loading}>{loading ? "Publishing..." : "Publish"}</button>
             </form>
         </Main>
     )

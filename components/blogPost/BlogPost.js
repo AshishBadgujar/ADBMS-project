@@ -9,6 +9,9 @@ import Axios from 'axios';
 import { useRouter } from 'next/router'
 import toast, { Toaster } from 'react-hot-toast';
 import Comment from '../comment/Comment';
+import Editor from '../editor/Editor';
+import { Parser } from 'html-to-react'
+
 
 const Post = ({ post, comments }) => {
     const router = useRouter()
@@ -77,9 +80,10 @@ const Post = ({ post, comments }) => {
                     <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
                     <div>
                         <span>Content</span>
-                        <textarea name="" id="" cols="30" rows="10" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+                        <Editor content={content} setContent={setContent} />
+                        {/* <textarea name="" id="" cols="30" rows="10" value={content} onChange={(e) => setContent(e.target.value)}></textarea> */}
                     </div>
-                    <button type="submit">Update</button>
+                    <button style={{ marginTop: "2rem" }} type="submit">Update</button>
                 </form>
                 :
                 <>
@@ -100,7 +104,7 @@ const Post = ({ post, comments }) => {
                         />
                         <div className={styling.wrapper}>
                             <h2>{title}</h2>
-                            <p>{content}</p>
+                            <div>{Parser().parse(content)}</div>
                             <div className={styling.flex}>
                                 <i className={styling.lastEdit}>- {post.author}</i>
                                 <i className={styling.lastEdit}>{lastEdit}</i>

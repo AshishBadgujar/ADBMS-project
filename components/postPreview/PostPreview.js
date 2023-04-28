@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-
 import utils from '../../utils/';
-
 import styling from './PostPreview.module.scss';
 
 const PostPreview = ({ id, previewImage, title, lastEdit, previewText, small }) => {
@@ -28,7 +26,7 @@ const PostPreview = ({ id, previewImage, title, lastEdit, previewText, small }) 
                             </Link>
                         </h2>
 
-                        <p>{previewText}</p>
+                        <p>{previewText.replace(/<[^>]+>/g, '')} </p>
                         <div>{lastEditDate}</div>
                     </div>
                 </article>

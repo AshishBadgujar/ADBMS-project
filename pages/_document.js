@@ -11,14 +11,14 @@ class CustomDocument extends Document {
         const initialProps = await Document.getInitialProps(ctx)
         return { ...initialProps };
     }
-    
+
     render() {
         return (
             <Html lang={blogConfig.defaultLanguage}>
                 <Head />
                 <body>
-                <Main />
-                <NextScript />
+                    <Main />
+                    <NextScript />
                 </body>
             </Html>
         );
