@@ -1,8 +1,8 @@
 
 export default {
     blogName: 'FinBlog',
-    defaultTitle: 'ADBMS project',
-    description: 'Designed for ADBMS project with Next.js as Fullstack framework and mongoDB as Database',
+    defaultTitle: 'finblog',
+    description: 'Designed for technical blogs project with Next.js as Fullstack framework and mongoDB as Database',
     // The default language is used to improve accessibility.
     // It is set on the HTML element. You can change this
     // to the main language of your content.
