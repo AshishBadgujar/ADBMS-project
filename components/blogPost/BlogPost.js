@@ -83,7 +83,7 @@ const Post = ({ post, comments }) => {
                         <Editor content={content} setContent={setContent} />
                         {/* <textarea name="" id="" cols="30" rows="10" value={content} onChange={(e) => setContent(e.target.value)}></textarea> */}
                     </div>
-                    <button style={{ marginTop: "2rem" }} type="submit">Update</button>
+                    <button style={{ marginTop: "5rem" }} type="submit">Update</button>
                 </form>
                 :
                 <>
