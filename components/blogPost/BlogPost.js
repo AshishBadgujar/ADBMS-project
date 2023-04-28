@@ -74,7 +74,7 @@ const Post = ({ post, comments }) => {
             <Toaster />
             {edit ?
                 <form action="" className="form" onSubmit={saveBlog}>
-                    <h2 style={{ marginBottom: "1rem" }}>Edit the blog! </h2>
+                    <h1 style={{ marginBottom: "3rem" }}>Edit the blog! </h1>
                     <br />
                     <span>Title</span>
                     <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
