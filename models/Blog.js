@@ -15,7 +15,7 @@ const blogSchema = new mongoose.Schema({
     },
     mediaUrl: {
         type: String,
-        required: true
+        required: false
     },
 }, { timestamps: true })
 

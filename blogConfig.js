@@ -1,15 +1,10 @@
 
 export default {
-    blogName: 'FinBlog',
-    defaultTitle: 'finblog',
-    description: 'Designed for technical blogs project with Next.js as Fullstack framework and mongoDB as Database',
-    // The default language is used to improve accessibility.
-    // It is set on the HTML element. You can change this
-    // to the main language of your content.
+    blogName: 'TechBlog',
+    defaultTitle: 'techblog',
+    description: 'Designed for technical blogs, made with Next.js and mongoDB.',
+    admin_pass: process.env.ADMIN_PASSWORD,
     defaultLanguage: 'en',
-    // The locale is used for multi language content. This
-    // feature hasn't been released yet. Please don't change
-    // this until Caasy fully supports multi language content.
     locale: 'en_US',
     social: {
         playstore: 'https://playstore.com',
@@ -24,7 +19,7 @@ export default {
             {
                 title: 'Contact us',
                 items: [
-                    { label: 'me@finblog.in', url: '#' }
+                    { label: 'me@techBlog.in', url: '#' }
                 ]
             },
             {

@@ -120,7 +120,7 @@ textarea {
     border: 1px solid rgb(218, 218, 218);
     background: none;
     font-size: unset;
-    padding: 8px 20px;
+    padding: 8px 8px;
     margin-bottom: 20px;
     transition: all 0.3s ease 0s;
     width: 100%;

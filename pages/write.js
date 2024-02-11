@@ -28,34 +28,46 @@ export default function Write() {
         setLoading(true)
         e.preventDefault()
         const mediaUrl = await imageUpload()
-        const res = await Axios.post(`${baseUrl}/api/blogs`, {
-            title,
-            author,
-            content,
-            mediaUrl,
-        })
-        const res2 = res.data
-        if (res2.err) {
-            notify(0, res2.err)
-            setLoading(false)
-        } else {
-            setLoading(false)
-            router.push('/')
-            notify(1, 'Blog successfully Published :)')
+        try {
+            const res = await Axios.post(`${baseUrl}/api/blogs`, {
+                title,
+                author,
+                content,
+                mediaUrl,
+            })
+            const res2 = res.data
+            if (res2.err) {
+                notify(0, res2.err)
+                setLoading(false)
+            } else {
+                setLoading(false)
+                router.push('/')
+                notify(1, 'Blog successfully Published :)')
+            }
+        } catch (error) {
+            console.log(error)
         }
     }
 
     const imageUpload = async () => {
+        if (!media) {
+            return ''
+        }
         const data = new FormData()
         data.append('file', media)
         data.append('upload_preset', 'nextjsBlog')
         data.append('cloud_name', "ashish124")
-        const res = await fetch(`https://api.cloudinary.com/v1_1/ashish124/image/upload`, {
-            method: "POST",
-            body: data
-        })
-        const res2 = await res.json()
-        return res2.url
+        try {
+            const res = await fetch(`https://api.cloudinary.com/v1_1/ashish124/image/upload`, {
+                method: "POST",
+                body: data
+            })
+            const res2 = await res.json()
+            return res2.url
+        } catch (error) {
+            console.log(error)
+            return ''
+        }
     }
 
     return (
@@ -76,7 +88,6 @@ export default function Write() {
                     <Image src={URL.createObjectURL(media)} className="responsive-img" alt="img" width={700} height={400} />
                 }
                 <div>
-                    {/* <textarea name="" id="" cols="30" rows="10" value={content} onChange={(e) => setContent(e.target.value)} required></textarea> */}
                     <Editor content={content} setContent={setContent} />
                 </div>
 

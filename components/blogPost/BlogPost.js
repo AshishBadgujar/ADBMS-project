@@ -35,37 +35,41 @@ const Post = ({ post, comments }) => {
 
     const deleteBlog = async () => {
         let pw = prompt("Let me confirm! Please enter password.")
-        if (pw == process.env.ADMIN_PASSWORD) {
-            await Axios.delete(`${baseUrl}/api/blog/${post._id}`)
-                .then(res => {
+        console.log("password=", process.env.NEXT_PUBLIC_ADMIN_PASSWORD, pw)
+        if (pw && pw == process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
+            try {
+                let res = await Axios.delete(`${baseUrl}/api/blog/${post._id}`)
+                if (res.data) {
                     router.push('/')
                     notify(1, res.data.message)
-                })
-                .catch(err => {
-                    notify(0, err)
-                })
+                }
+            } catch (error) {
+                notify(0, error)
+            }
         } else {
-            return
+            notify(0, "Wrong Password")
         }
     }
 
     const saveBlog = async (e) => {
         let pw = prompt("Let me confirm! Please enter password.")
-        if (pw == process.env.ADMIN_PASSWORD) {
+        if (pw && pw == process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
             setEdit(false)
             e.preventDefault();
-            await Axios.post(`${baseUrl}/api/blog/${post._id}`, {
-                id: post._id,
-                title,
-                content,
-            })
-                .then(res => {
-                    notify(1, 'Blog successfully updated :)')
-                }).catch(err => {
-                    notify(0, err)
+            try {
+                let res = await Axios.post(`${baseUrl}/api/blog/${post._id}`, {
+                    id: post._id,
+                    title,
+                    content,
                 })
+                if (res.data) {
+                    notify(1, 'Blog successfully updated :)')
+                }
+            } catch (error) {
+                notify(0, error)
+            }
         } else {
-            return
+            notify(0, "Wrong Password")
         }
     }
 
@@ -79,9 +83,7 @@ const Post = ({ post, comments }) => {
                     <span>Title</span>
                     <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
                     <div>
-                        <span>Content</span>
                         <Editor content={content} setContent={setContent} />
-                        {/* <textarea name="" id="" cols="30" rows="10" value={content} onChange={(e) => setContent(e.target.value)}></textarea> */}
                     </div>
                     <button style={{ marginTop: "5rem" }} type="submit">Update</button>
                 </form>
@@ -95,15 +97,16 @@ const Post = ({ post, comments }) => {
                         />
                     </div>
                     <article className={styling.elements}>
-                        <Image
+                        {post.mediaUrl != '' && <Image
                             src={post.mediaUrl}
                             className={styling.previewImage}
                             alt='preview image'
                             width={1000}
                             height={500}
-                        />
+                        />}
                         <div className={styling.wrapper}>
-                            <h2>{title}</h2>
+                            <h1>{title}</h1>
+                            <br />
                             <div>{Parser().parse(content)}</div>
                             <div className={styling.flex}>
                                 <i className={styling.lastEdit}>- {post.author}</i>
